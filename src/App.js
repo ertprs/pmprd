@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import HomePage from "./components/pages/HomePage/HomePage";
 
-function App() {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  toolbar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: theme.spacing(0, 1),
+    ...theme.mixins.toolbar,
+  },
+  content: {
+    flexGrow: 1,
+    display: "flex",
+    justifyContent: "center",
+    padding: theme.spacing(3),
+  },
+}));
+
+export default function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Route path="/" component={HomePage} />
+      </Router>
     </div>
   );
 }
-
-export default App;
